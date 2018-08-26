@@ -17,10 +17,10 @@ Running on an i7 3770k @ 4.5GHz, compiled in Development
 [StaticEnum]      Total: 0.0012433007, Avg: 0.0000001243
 [StaticEnumNaive] Total: 0.0020990893, Avg: 0.0000002099
 
-[Raw]      Total: 0.0004395805, Avg: 0.0000000440
-[Old]      Total: 0.1629130915, Avg: 0.0000162913
-[New]      Total: 0.1464482434, Avg: 0.0000146448
-[NewNaive] Total: 0.1443553306, Avg: 0.0000144355
+[Raw]             Total: 0.0004395805, Avg: 0.0000000440
+[FindObject]      Total: 0.1629130915, Avg: 0.0000162913
+[StaticEnum]      Total: 0.1464482434, Avg: 0.0000146448
+[StaticEnumNaive] Total: 0.1443553306, Avg: 0.0000144355
 
 0: One
 1: Two
