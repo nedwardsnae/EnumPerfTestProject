@@ -149,10 +149,10 @@ int32 UEnumPerfTestCommandlet::Main(const FString& Params)
 		check(AccumulatedValue == AccumulatedTestEnumStringLengths);
 	}
 
-	double OldMethodStringRetrievalDuration = 0.0;
+	double FindObjectStringRetrievalDuration = 0.0;
 	for (int32 Iteration = 0; Iteration < TestIterations; ++Iteration)
 	{
-		FScopedDurationTimer ScopedDurationTimer(OldMethodStringRetrievalDuration);
+		FScopedDurationTimer ScopedDurationTimer(FindObjectStringRetrievalDuration);
 		int32 AccumulatedValue = 0;
 		UEnum* EnumClass = FindObject<UEnum>(ANY_PACKAGE, TEXT("EMyTestEnum"));
 		for (int32 Index = 0; Index < (int32)EMyTestEnum::MAX; ++Index)
@@ -163,10 +163,10 @@ int32 UEnumPerfTestCommandlet::Main(const FString& Params)
 		check(AccumulatedValue == AccumulatedTestEnumStringLengths);
 	}
 
-	double NewMethodStringRetrievalDuration = 0.0;
+	double StaticEnumStringRetrievalDuration = 0.0;
 	for (int32 Iteration = 0; Iteration < TestIterations; ++Iteration)
 	{
-		FScopedDurationTimer ScopedDurationTimer(NewMethodStringRetrievalDuration);
+		FScopedDurationTimer ScopedDurationTimer(StaticEnumStringRetrievalDuration);
 		int32 AccumulatedValue = 0;
 		UEnum* EnumClass = StaticEnum<EMyTestEnum>();
 		for (int32 Index = 0; Index < (int32)EMyTestEnum::MAX; ++Index)
@@ -177,10 +177,10 @@ int32 UEnumPerfTestCommandlet::Main(const FString& Params)
 		check(AccumulatedValue == AccumulatedTestEnumStringLengths);
 	}
 
-	double NewNaiveMethodStringRetrievalDuration = 0.0;
+	double StaticEnumNaiveStringRetrievalDuration = 0.0;
 	for (int32 Iteration = 0; Iteration < TestIterations; ++Iteration)
 	{
-		FScopedDurationTimer ScopedDurationTimer(NewNaiveMethodStringRetrievalDuration);
+		FScopedDurationTimer ScopedDurationTimer(StaticEnumNaiveStringRetrievalDuration);
 		int32 AccumulatedValue = 0;
 		for (int32 Index = 0; Index < (int32)EMyTestEnum::MAX; ++Index)
 		{
@@ -191,10 +191,10 @@ int32 UEnumPerfTestCommandlet::Main(const FString& Params)
 		check(AccumulatedValue == AccumulatedTestEnumStringLengths);
 	}
 
-	UE_LOG(LogTemp, Display, TEXT("[Raw]      Total: %.10f, Avg: %.10f"), RawStringRetrievalDuration,            RawStringRetrievalDuration            / (double)TestIterations);
-	UE_LOG(LogTemp, Display, TEXT("[Old]      Total: %.10f, Avg: %.10f"), OldMethodStringRetrievalDuration,      OldMethodStringRetrievalDuration      / (double)TestIterations);
-	UE_LOG(LogTemp, Display, TEXT("[New]      Total: %.10f, Avg: %.10f"), NewMethodStringRetrievalDuration,      NewMethodStringRetrievalDuration      / (double)TestIterations);
-	UE_LOG(LogTemp, Display, TEXT("[NewNaive] Total: %.10f, Avg: %.10f"), NewNaiveMethodStringRetrievalDuration, NewNaiveMethodStringRetrievalDuration / (double)TestIterations);
+	UE_LOG(LogTemp, Display, TEXT("[Raw]             Total: %.10f, Avg: %.10f"), RawStringRetrievalDuration,             RawStringRetrievalDuration             / (double)TestIterations);
+	UE_LOG(LogTemp, Display, TEXT("[FindObject]      Total: %.10f, Avg: %.10f"), FindObjectStringRetrievalDuration,      FindObjectStringRetrievalDuration      / (double)TestIterations);
+	UE_LOG(LogTemp, Display, TEXT("[StaticEnum]      Total: %.10f, Avg: %.10f"), StaticEnumStringRetrievalDuration,      StaticEnumStringRetrievalDuration      / (double)TestIterations);
+	UE_LOG(LogTemp, Display, TEXT("[StaticEnumNaive] Total: %.10f, Avg: %.10f"), StaticEnumNaiveStringRetrievalDuration, StaticEnumNaiveStringRetrievalDuration / (double)TestIterations);
 
 	UEnum* ForwardDeclaredEnum = StaticEnum<EOtherTestEnum>();
 	
