@@ -1,0 +1,13 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{7E0C3670-4C49-EEAD-2FC6-8E922089D321}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "EnumPerfTestProject",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
